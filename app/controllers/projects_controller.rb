@@ -1,7 +1,8 @@
 class ProjectsController < ApplicationController
 
   def index
-    @projects = Project.all
+    @projects = Project.accepting_pledges
+    #@projects = Project.all
   end
   
   def show
@@ -10,6 +11,34 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+  end
+  
+  def update
+    @project = Project.find(params[:id])
+    @project.update(project_params)
+    redirect_to @project
+  end
+
+  def new
+    @project = Project.new
+  end
+
+  def create
+    @project = Project.new(project_params)
+    @project.save
+    redirect_to @project
+  end
+
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    redirect_to projects_url
+  end
+
+  private
+  
+  def project_params
+    params.require(:project).permit(:name, :description, :target_pledge_amount, :pledging_ends_on, :website, :team_members, :image_file_name)
   end
 
 end
