@@ -1,0 +1,37 @@
+@import "colors"; @import "fonts";
+
+body{
+	font-family: $font-for-page;
+	font-size: $font-size-page;
+}
+
+header#page-header{
+	color: $font-color-two;
+	background-color: $primary-color;
+	padding: 5px;
+    border-bottom: 5px solid darken($primary-color, 10%);
+    h1{
+  	  text-align: center;
+  	  text-transform: uppercase;
+    }
+}
+
+footer#page-footer{
+	color: $primary-color;
+	background-color: $secondary-color;
+	padding: 5px;
+    border-top: 5px solid darken($primary-color, 10%);
+}
+
+aside#sidebar{
+	float: right;
+	background-color: $secondary-color;
+	padding: 20px;
+	
+	ul{
+		li{
+			list-style-type: none;
+
+		}
+	}
+}
